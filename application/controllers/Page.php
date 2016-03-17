@@ -13,7 +13,7 @@ class Page extends CI_Controller
 	}
 	private function _init()
 	{
-		$this->output->set_template ( 'default_page' );
+		$this->output->set_template ( 'trocdeal' );
 		
 		$this->load->js ( 'assets/themes/default/js/jquery-1.9.1.min.js' );
 		$this->load->js ( 'assets/themes/default/hero_files/bootstrap-transition.js' );
@@ -21,7 +21,7 @@ class Page extends CI_Controller
 	}
 	public function index()
 	{
-		$this->load->view ( 'static_pages/welcome' );
+		$this->load->view ( 'static_pages/dashboard' );
 	}
 	public function login()
 	{
@@ -37,9 +37,4 @@ class Page extends CI_Controller
 		$this->load->section ( 'sidebar', 'static_pages/sidebar' );
 		$this->load->view ( 'static_pages/forgottenPassword.php' );
 	}
-	public function contact()
-	{
-		// $this->output->unset_template ();
-		$this->load->view ( 'static_pages/contact.php' );
-	}		
 }
