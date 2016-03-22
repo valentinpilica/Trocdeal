@@ -2,6 +2,17 @@
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 class Login extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+	
+		$this->_init();
+	}
+	private function _init()
+	{
+		$this->output->set_template('loginTrocdeal');
+	}
+	
 	function index()
 	{
 		if ($this->session->userdata('isLoggedIn'))
@@ -36,17 +47,11 @@ class Login extends CI_Controller
 	}
 	function show_login($show_error = false)
 	{
-		$data['css'] = array (
-				"theme-default.css" 
-		);
-		$data['js'] = array (
-				"plugins/jquery" => array (
-						"jquery.min.js" 
-				),
-				"plugins/bootstrap" => array (
-						"bootstrap.min.js" 
-				) 
-		);
+		$this->output->set_title('TrocDeal - Business changing between products');
+		$this->load->css('assets/themes/trocdeal/css/theme-default.css');
+		$this->load->js('assets/themes/trocdeal/js/plugins/jquery/jquery.min.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/bootstrap/bootstrap.min.js');
+
 		$data['error'] = $show_error;
 		
 		$this->load->helper('form');

@@ -10,6 +10,12 @@ class Main extends CI_Controller
 		{
 			redirect('/login/show_login');
 		}
+		
+		$this->_init();
+	}
+	private function _init()
+	{
+		$this->output->set_template('trocdeal');
 	}
 	
 	/**
@@ -19,43 +25,32 @@ class Main extends CI_Controller
 	 */
 	function show_main()
 	{
-		$data['css'] = array (
-				"theme-default.css",
-				"main.css"
-		);
-		$data['js'] = array (
-				"plugins/jquery" => array (
-						"jquery.min.js",
-						"jquery-ui.min.js" 
-				),
-				"plugins/bootstrap" => array (
-						"bootstrap.min.js",
-						"bootstrap-datepicker.js" 
-				),
-				"plugins/icheck" => "icheck.min.js",
-				"plugins/mcustomscrollbar" => "jquery.mCustomScrollbar.min.js",
-				"plugins/scrolltotop" => "scrolltopcontrol.js",
-				"plugins/morris" => array (
-						"raphael-min.js",
-						"morris.min.js" 
-				),
-				"plugins/rickshaw" => array (
-						"d3.v3.js",
-						"rickshaw.min.js" 
-				),
-				"plugins/jvectormap" => array (
-						"jquery-jvectormap-1.2.2.min.js",
-						"jquery-jvectormap-world-mill-en.js" 
-				),
-				"plugins/owl" => "owl.carousel.min.js",
-				"plugins" => "moment.min.js",
-				"plugins/daterangepicker" => "daterangepicker.js",
-				"settings.js",
-				"plugins.js",
-				"actions.js",
-				"demo_dashboard.js",
-				"main.js" 
-		);
+		$this->output->set_title('TrocDeal - Business changing between products');
+		
+		$this->load->css('assets/themes/trocdeal/css/theme-default.css');
+			
+		$this->load->js('assets/themes/trocdeal/js/plugins/jquery/jquery.min.js');	
+		$this->load->js('assets/themes/trocdeal/js/plugins/jquery/jquery-ui.min.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/bootstrap/bootstrap.min.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/bootstrap/bootstrap-datepicker.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/icheck/icheck.min.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/scrolltotop/scrolltopcontrol.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/rickshaw/d3.v3.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/rickshaw/rickshaw.min.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/owl/owl.carousel.min.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/moment.min.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins/daterangepicker/daterangepicker.js');
+ 		$this->load->js('assets/themes/trocdeal/js/settings.js');
+		$this->load->js('assets/themes/trocdeal/js/plugins.js');
+		$this->load->js('assets/themes/trocdeal/js/actions.js');
+		
+		$this->load->css('assets/themes/trocdeal/css/main.css');
+		$this->load->js('assets/themes/trocdeal/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js');
+		$this->load->js('assets/themes/trocdeal/js/main.js');
+
 		$this->load->model('post_m');
 		
 		// Get some data from the user's session
