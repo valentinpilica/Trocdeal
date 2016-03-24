@@ -3,7 +3,7 @@ $(function () {
   var App = {
 
     //TODO: Find a better way to set these from config.php
-    baseUrl : '/ci_sock/part_one/',
+    baseUrl : '/Trocdeal/',
     maxCharacters: 320,
     maxPostsPerPage : 5,
 

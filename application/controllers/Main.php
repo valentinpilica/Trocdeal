@@ -16,6 +16,29 @@ class Main extends CI_Controller
 	private function _init()
 	{
 		$this->output->set_template('trocdeal');
+		$this->output->setDefaultTheme($this->config->item('default_theme_name'));
+		$this->output->set_title('TrocDeal - Business changing between products');
+		$this->load->css('assets/themes/' . $this->config->item('default_theme_name') . '/css/theme-default.css');
+		$this->load->audio('assets/themes/' . $this->config->item('default_theme_name') . '/audio/alert.mp3');
+		$this->load->audio('assets/themes/' . $this->config->item('default_theme_name') . '/audio/fail.mp3');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/jquery/jquery.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/jquery/jquery-ui.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/bootstrap/bootstrap.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/bootstrap/bootstrap-datepicker.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/icheck/icheck.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/scrolltotop/scrolltopcontrol.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/rickshaw/d3.v3.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/rickshaw/rickshaw.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/owl/owl.carousel.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/moment.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/daterangepicker/daterangepicker.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/settings.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/actions.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/main.js');		
 	}
 	
 	/**
@@ -24,33 +47,7 @@ class Main extends CI_Controller
 	 * application screen is set up.
 	 */
 	function show_main()
-	{
-		$this->output->set_title('TrocDeal - Business changing between products');
-		
-		$this->load->css('assets/themes/trocdeal/css/theme-default.css');
-			
-		$this->load->js('assets/themes/trocdeal/js/plugins/jquery/jquery.min.js');	
-		$this->load->js('assets/themes/trocdeal/js/plugins/jquery/jquery-ui.min.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/bootstrap/bootstrap.min.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/bootstrap/bootstrap-datepicker.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/icheck/icheck.min.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/scrolltotop/scrolltopcontrol.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/rickshaw/d3.v3.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/rickshaw/rickshaw.min.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/owl/owl.carousel.min.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/moment.min.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/daterangepicker/daterangepicker.js');
- 		$this->load->js('assets/themes/trocdeal/js/settings.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins.js');
-		$this->load->js('assets/themes/trocdeal/js/actions.js');
-		
-		$this->load->css('assets/themes/trocdeal/css/main.css');
-		$this->load->js('assets/themes/trocdeal/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js');
-		$this->load->js('assets/themes/trocdeal/js/main.js');
-
+	{		
 		$this->load->model('post_m');
 		
 		// Get some data from the user's session
@@ -76,7 +73,7 @@ class Main extends CI_Controller
 		{
 			$data['other_posts'] = $other_users_posts;
 		}
-		
+
 		$data['is_admin'] = $is_admin;
 		$data['max_posts'] = $posts ? count($posts) : 0;
 		$data['post_count'] = $this->post_m->get_post_count_for_user($user_id);
@@ -85,7 +82,11 @@ class Main extends CI_Controller
 		$data['avatar'] = $this->session->userdata('avatar');
 		$data['tagline'] = $this->session->userdata('tagline');
 		$data['teamId'] = $this->session->userdata('teamId');
-		
+
+		$this->breadcrumbs->push('Comments', '/main/show_main');
+		$this->breadcrumbs->unshift('Home', '/');
+
+		$this->load->section('breadcrumbs', 'sections/breadcrumbs');
 		$this->load->view('main', $data);
 	}
 	function post_message()

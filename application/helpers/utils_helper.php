@@ -1,6 +1,27 @@
 <?php
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
+if (! function_exists('active_link'))
+{
+	function activateMenu($controller)
+	{
+		$CI = get_instance();
+		$class = $CI->router->fetch_class();
+		
+		return ($class == $controller) ? 'active' : '';
+	}
+}
+
+if (! function_exists('extratLastPartFromURLPath'))
+{
+	function extratLastPartFromURLPath($urlPath)
+	{
+		$pieces = explode("/", $urlPath);
+		
+		return $pieces[count($pieces) - 1];
+	}
+}
+
 if (! function_exists('includeJS'))
 {
 	function includeJS($arr, $key = null, $defaultTheme = 'trocdeal', $fileTypePath = 'js')

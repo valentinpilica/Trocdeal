@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="icon" href="<?php echo base_url(); ?>assets/themes/<?php echo $defaultThemeName; ?>/favicon.ico" type="image/x-icon" />
 <!-- END META SECTION -->
 
 <?php
@@ -32,7 +32,9 @@ echo "\n\t";
 foreach ($css as $file)
 {
 	echo "\n\t\t";
-	?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php
+	?><link rel="stylesheet"
+	<?php (strcmp(extratLastPartFromURLPath($file), 'theme-default.css') == 0) ?  print('id="theme"') : ''?>
+	href="<?php echo $file; ?>" type="text/css" /><?php
 }
 echo "\n\t";
 

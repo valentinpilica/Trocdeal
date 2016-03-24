@@ -10,6 +10,8 @@ class Login extends CI_Controller
 	}
 	private function _init()
 	{
+		$this->output->setDefaultTheme($this->config->item('default_theme_name'));
+		$this->output->set_title('TrocDeal - Business changing between products');		
 		$this->output->set_template('loginTrocdeal');
 	}
 	
@@ -47,11 +49,11 @@ class Login extends CI_Controller
 	}
 	function show_login($show_error = false)
 	{
-		$this->output->set_title('TrocDeal - Business changing between products');
-		$this->load->css('assets/themes/trocdeal/css/theme-default.css');
-		$this->load->js('assets/themes/trocdeal/js/plugins/jquery/jquery.min.js');
-		$this->load->js('assets/themes/trocdeal/js/plugins/bootstrap/bootstrap.min.js');
+		$this->load->css('assets/themes/' . $this->config->item('default_theme_name') . '/css/theme-default.css');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/jquery/jquery.min.js');
+		$this->load->js('assets/themes/' . $this->config->item('default_theme_name') . '/js/plugins/bootstrap/bootstrap.min.js');
 
+		$data['default_theme_name'] = $this->config->item('default_theme_name');
 		$data['error'] = $show_error;
 		
 		$this->load->helper('form');

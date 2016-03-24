@@ -31,14 +31,17 @@
                     </li>
 
                     <li class="xn-title">Account</li> 
-					<li><a href="<?php echo site_url('page/login'); ?>"><span class="fa fa-sign-in"></span> <span class="xn-text">Login</span></a></li>
-					<li><a href="<?php echo site_url('page/signUp'); ?>"><span class="fa fa-sign-out"></span> <span class="xn-text">Sign Up</span></a></li>
-					<li><a href="<?php echo site_url('page/forgottenPassword'); ?>"><span class="fa fa-unlock-alt"></span> <span class="xn-text">Forgotten your password?</span></a></li>
-                    
+					<li class="<?php echo activateMenu('account'); ?>">
+						<a href="<?php echo site_url('account/profile'); ?>">
+							<span class="fa fa-user"></span> 
+							<span class="xn-text">Profile</span>
+						</a>
+					</li>     
                     <li class="xn-title">Navigation</li>
-                    <li class="active">
+                    <li class="<?php echo activateMenu('page'); ?>">
                         <a href="<?php echo site_url('page/index'); ?>"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
-                    </li>                                    
+                    </li>   
+                    <li class="<?php echo activateMenu('main'); ?>"><a href="<?php echo site_url('main/show_main'); ?>"><span class="fa fa-user"></span> <span class="xn-text">Comments</span></a></li>                                
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
@@ -160,10 +163,9 @@
                 <!-- END X-NAVIGATION VERTICAL -->                     
 
                 <!-- START BREADCRUMB -->
-                <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
-                    <li class="active">Dashboard</li>
-                </ul>
+                
+				<?php echo $this->load->get_section('breadcrumbs'); ?>
+				
                 <!-- END BREADCRUMB -->                       
                 
                 <!-- PAGE CONTENT WRAPPER -->
@@ -187,18 +189,13 @@
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+                            <a href="<?php echo base_url() ?>/index.php/login/logout_user" class="btn btn-success btn-lg">Yes</a>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END MESSAGE BOX-->
-
-        <!-- START PRELOADS -->
-        <audio id="audio-alert" src="<?php echo base_url(); ?>assets/themes/trocdeal/audio/alert.mp3" preload="auto"></audio>
-        <audio id="audio-fail" src="<?php echo base_url(); ?>assets/themes/trocdeal/audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->   
+        <!-- END MESSAGE BOX--> 
                        
   <?php $this->load->view('themes/include/footer') ?>

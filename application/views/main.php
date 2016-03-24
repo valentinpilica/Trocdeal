@@ -1,33 +1,3 @@
-<div class="navbar">
-	<div class="navbar-inner">
-		<div class="container-fluid">
-			<a class="brand" href="#" name="top">Post Message App</a>
-			<ul class="nav">
-				<li><a href="#"><i class="icon-home"></i> Home</a></li>
-				<li class="divider-vertical"></li>
-			</ul>
-			<div class="btn-group pull-right">
-            <?php if ($is_admin) : ?>
-            <a class="btn dropdown-toggle" data-toggle="dropdown"
-					href="#"> <i class="icon-wrench"></i> admin <span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a data-toggle="modal" href="#myModal"><i class="icon-user"></i>
-							New User</a></li>
-					<li class="divider"></li>
-					<li><a href="<?php echo base_url() ?>/index.php/login/logout_user"><i
-							class="icon-share"></i> Logout</a></li>
-				</ul>
-            <?php else : ?>
-              <a class="btn"
-					href="<?php echo base_url() ?>/index.php/login/logout_user"><i
-					class="icon-share"></i> Logout</a>
-            <?php endif; ?>
-          </div>
-		</div>
-	</div>
-</div>
-
 <div class="container">
 
 	<div class="span5 offset1">
