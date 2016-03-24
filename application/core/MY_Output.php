@@ -22,7 +22,7 @@ class MY_Output extends CI_Output
 {
 	const OUTPUT_MODE_NORMAL = 10;
 	const OUTPUT_MODE_TEMPLATE = 11;
-	const TEMPLATE_ROOT = "themes/";
+	const TEMPLATE_ROOT = "layout/";
 	private $_title = "";
 	private $_charset = "utf-8";
 	private $_language = "en-us";

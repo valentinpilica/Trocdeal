@@ -70,7 +70,7 @@ $(function () {
       };
       // TODO: Client-side validation goes here
 
-      var postUrl = App.baseUrl + '/index.php/main/create_new_user';
+      var postUrl = App.baseUrl + '/index.php/comments/create_new_user';
 
       $.ajax({
         type: 'POST',
@@ -92,7 +92,7 @@ $(function () {
      */
     postMessage: function (e) {
       var messageText = App.$messageBox.val();
-      var postUrl = App.baseUrl + '/index.php/main/post_message';
+      var postUrl = App.baseUrl + '/index.php/comments/post_message';
 
       if (messageText.length) {
         $.ajax({
@@ -146,7 +146,7 @@ $(function () {
     saveTagline : function(e) {
       var newText = $(this).html();
       if( App.$taglineText !== newText ) {
-        var postUrl = App.baseUrl + '/index.php/main/update_tagline';
+        var postUrl = App.baseUrl + '/index.php/comments/update_tagline';
         $.ajax({
           type: "POST",
           url: postUrl,
